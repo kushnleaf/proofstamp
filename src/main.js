@@ -1,4 +1,4 @@
-// ProofStamp – main app code (Stamp page)
+// ProofStamp – main app code (Stamp page + tabs)
 import './style.css'
 
 // The library in public/vendor/ puts itself on window.OpenTimestamps
@@ -157,8 +157,8 @@ stampBtn.addEventListener('click', async () => {
     downloadBtn.hidden = false
     showStatus(
       'success',
-      `✅ Stamped! Your proof "${currentFile.name}.ots" was downloaded.\n\n` +
-        '⏳ Status: PENDING – Bitcoin will confirm it in a few hours.\n' +
+      `Stamped! Your proof "${currentFile.name}.ots" was downloaded.\n\n` +
+        'Status: PENDING – Bitcoin will confirm it in a few hours.\n' +
         'Keep the proof together with your original file, and do not change the original.'
     )
   } catch (err) {

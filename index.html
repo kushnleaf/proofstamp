@@ -31,10 +31,18 @@
 
         <label id="drop-zone" class="drop-zone" for="file-input">
           <input type="file" id="file-input" hidden />
-          <span class="drop-icon" aria-hidden="true">📄</span>
+          <!-- simple file icon, drawn with lines -->
+          <svg class="drop-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+            stroke="#9a9a95" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+            <path d="M14 3v5h5" />
+            <path d="M12 17v-6" />
+            <path d="M9.5 13.5 12 11l2.5 2.5" />
+          </svg>
           <strong>Drop a file here</strong>
           <span class="muted">or click to choose one</span>
-          <span class="muted small">🔒 Your file never leaves your computer.</span>
+          <span class="muted small">Your file never leaves your computer.</span>
         </label>
 
         <div id="result" class="card" hidden>
@@ -60,10 +68,42 @@
         </div>
       </section>
 
-      <!-- ===== VERIFY (built later) ===== -->
+      <!-- ===== VERIFY ===== -->
       <section id="verify-view" hidden>
-        <h1>Verify a file</h1>
-        <p class="lead">Coming soon: drop the original file and its .ots proof to check if it is real.</p>
+        <h1>Is this file real?</h1>
+        <p class="lead">
+          Drop the original file and its .ots proof. ProofStamp checks the Bitcoin blockchain and
+          tells you when the file existed – and whether it has been changed.
+        </p>
+
+        <div class="verify-grid">
+          <label id="v-file-zone" class="drop-zone small-zone" for="v-file-input">
+            <input type="file" id="v-file-input" hidden />
+            <span class="zone-step">1</span>
+            <strong>Original file</strong>
+            <span id="v-file-label" class="muted small zone-file">Drop or click to choose</span>
+          </label>
+          <label id="v-ots-zone" class="drop-zone small-zone" for="v-ots-input">
+            <input type="file" id="v-ots-input" hidden />
+            <span class="zone-step">2</span>
+            <strong>Proof file (.ots)</strong>
+            <span id="v-ots-label" class="muted small zone-file">Drop or click to choose</span>
+          </label>
+        </div>
+        <p class="muted small center">Tip: you can also drop both files at once into either box.</p>
+
+        <button id="verify-btn" class="primary-btn" type="button" disabled>Check in Bitcoin</button>
+
+        <div id="verdict" class="verdict" hidden>
+          <div id="verdict-title" class="verdict-title"></div>
+          <div id="verdict-text" class="verdict-text"></div>
+        </div>
+        <button id="v-download-btn" class="secondary-btn" type="button" hidden>
+          Download upgraded proof (.ots)
+        </button>
+        <button id="v-reset-btn" class="link-btn v-reset" type="button" hidden>
+          Check another file
+        </button>
       </section>
 
       <!-- ===== HOW IT WORKS ===== -->
@@ -86,12 +126,12 @@
           </li>
           <li>
             <strong>Bitcoin confirms.</strong> After a few hours the proof is in a Bitcoin block.
-            From then on, anyone can check when your file existed – no notary, company or
-            government needed.
+            From then on, anyone can check on the Verify page when your file existed – no notary,
+            company or government needed.
           </li>
         </ol>
         <p class="privacy">
-          🔒 <strong>Private by design:</strong> your file is never uploaded. Only its fingerprint
+          <strong>Private by design:</strong> your file is never uploaded. Only its fingerprint
           leaves your computer, and the file cannot be rebuilt from it.
         </p>
         <p class="muted small">
@@ -107,5 +147,6 @@
     </footer>
 
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/verify.js"></script>
   </body>
 </html>

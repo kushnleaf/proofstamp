@@ -24,6 +24,13 @@ Presentation: 15 December 2026. Budget: €0.
   proof changed, the page offers "Download upgraded proof".
 - UI: no emojis on the website (Otto's decision). Colors carry the meaning:
   green = REAL, amber = PENDING, red = DOES NOT MATCH, grey = error.
+- Design (chosen 25 Nov, Option A "Sinine"): Estonian flag blue #0072CE with sky-blue
+  tints, thin blue/black/white flag stripe on top, Space Grotesk headings + Inter text,
+  seal logo (dashed ring + check), icon cards in "How it works".
+  Design canvas: https://claude.ai/artifact/3PNnJg1THLWEU4ZFR74obn
+- Dark mode: button in the header (src/theme.js). Colors are CSS variables in
+  src/style.css (:root = light, [data-theme='dark'] = dark). The choice is saved in
+  localStorage ("proofstamp-theme"); a tiny script in <head> applies it before drawing.
 - Code: public GitHub repo – https://github.com/kushnleaf/proofstamp
 - Hosting: Vercel (free Hobby plan), auto-deploys on every git push.
 - Live site: https://proofstamp-seven.vercel.app
@@ -32,10 +39,11 @@ Presentation: 15 December 2026. Budget: €0.
 
 ## File structure
 - index.html – page layout (Stamp, Verify, How it works)
-- src/main.js + src/style.css – tabs + Stamp page + main styles
+- src/main.js + src/style.css – tabs + Stamp page + main styles (light + dark colors)
+- src/theme.js – dark mode button
 - src/verify.js + src/verify.css – Verify page (incl. upgrade)
 - public/vendor/opentimestamps.min.js – OpenTimestamps library
-- public/favicon.svg – orange tab icon
+- public/favicon.svg – blue seal tab icon
 
 ## Library notes (checked in the library code)
 - Pass the hash as a Uint8Array (or normal array). A raw ArrayBuffer silently becomes
@@ -60,7 +68,7 @@ Presentation: 15 December 2026. Budget: €0.
 - [x] 3 test files stamped on 25 Nov 14:48 (photo, PDF, Word) → success criterion 1
 - [x] Success criteria 3 (one letter changed → DOES NOT MATCH) and
       4 (broken proof → clear error) work
-- [x] ProofStamp tab icon
+- [x] New design: Option A (Estonian blue), seal logo, dark mode – tested 25 Nov
 
 ## Next
 - [ ] Verify own test files once confirmed → REAL with 25 Nov date (criterion 2),

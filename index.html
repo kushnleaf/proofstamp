@@ -4,17 +4,108 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProofStamp – test</title>
+    <title>ProofStamp – prove your file existed</title>
+    <meta name="description" content="Prove that a file existed at a certain time and has not been changed, using the Bitcoin blockchain. Free, private, no account." />
     <!-- OpenTimestamps browser library (same file opentimestamps.org uses) -->
     <script src="/vendor/opentimestamps.min.js"></script>
   </head>
   <body>
-    <main style="max-width: 760px; margin: 40px auto; padding: 0 16px; text-align: left;">
-      <h1>ProofStamp – OpenTimestamps test</h1>
-      <p>Choose any file. It stays on your computer – only its fingerprint (SHA-256) is sent.</p>
-      <input type="file" id="file-input" />
-      <pre id="log" style="white-space: pre-wrap; word-break: break-all; font-size: 13px;"></pre>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/">Proof<span>Stamp</span></a>
+        <nav class="tabs">
+          <button class="tab active" data-tab="stamp" type="button">Stamp</button>
+          <button class="tab" data-tab="verify" type="button">Verify</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- ===== STAMP ===== -->
+      <section id="stamp-view">
+        <h1>Prove your file existed – today, forever.</h1>
+        <p class="lead">
+          Drop any file. ProofStamp puts its fingerprint into the Bitcoin blockchain, so you can
+          later prove it existed at this time and has not been changed since.
+        </p>
+
+        <label id="drop-zone" class="drop-zone" for="file-input">
+          <input type="file" id="file-input" hidden />
+          <span class="drop-icon" aria-hidden="true">📄</span>
+          <strong>Drop a file here</strong>
+          <span class="muted">or click to choose one</span>
+          <span class="muted small">🔒 Your file never leaves your computer.</span>
+        </label>
+
+        <div id="result" class="card" hidden>
+          <div class="file-row">
+            <div>
+              <div id="file-name" class="file-name"></div>
+              <div id="file-size" class="muted small"></div>
+            </div>
+            <button id="reset-btn" class="link-btn" type="button">Choose another file</button>
+          </div>
+
+          <div class="field-label">Fingerprint (SHA-256)</div>
+          <div class="hash-row">
+            <code id="file-hash" class="hash">…</code>
+            <button id="copy-btn" class="small-btn" type="button">Copy</button>
+          </div>
+
+          <button id="stamp-btn" class="primary-btn" type="button" disabled>Stamp in Bitcoin</button>
+          <div id="status" class="status" hidden></div>
+          <button id="download-btn" class="secondary-btn" type="button" hidden>
+            Download proof again (.ots)
+          </button>
+        </div>
+      </section>
+
+      <!-- ===== VERIFY (built later) ===== -->
+      <section id="verify-view" hidden>
+        <h1>Verify a file</h1>
+        <p class="lead">Coming soon: drop the original file and its .ots proof to check if it is real.</p>
+      </section>
+
+      <!-- ===== HOW IT WORKS ===== -->
+      <section class="how">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>
+            <strong>Fingerprint.</strong> Your browser calculates the file's SHA-256 fingerprint –
+            a unique 64-character code. Change one letter in the file and the fingerprint is
+            completely different.
+          </li>
+          <li>
+            <strong>Stamp.</strong> Only this fingerprint is sent to the free, public
+            OpenTimestamps servers. They collect many fingerprints and write them into one
+            Bitcoin transaction.
+          </li>
+          <li>
+            <strong>Keep the proof.</strong> You download a small .ots proof file. Keep it
+            together with your original file.
+          </li>
+          <li>
+            <strong>Bitcoin confirms.</strong> After a few hours the proof is in a Bitcoin block.
+            From then on, anyone can check when your file existed – no notary, company or
+            government needed.
+          </li>
+        </ol>
+        <p class="privacy">
+          🔒 <strong>Private by design:</strong> your file is never uploaded. Only its fingerprint
+          leaves your computer, and the file cannot be rebuilt from it.
+        </p>
+        <p class="muted small">
+          Tip: on a Mac, .ots files may show up as "OpenDocument Template". That is just a name
+          clash with another program – don't open them, simply keep them.
+        </p>
+      </section>
     </main>
+
+    <footer class="container footer muted small">
+      ProofStamp – student project, Bitcoin and Blockchain course, VŠE Prague. Built on
+      OpenTimestamps and Bitcoin.
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

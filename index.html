@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>proofstamp</title>
+    <title>ProofStamp – test</title>
+    <!-- OpenTimestamps browser library (same file opentimestamps.org uses) -->
+    <script src="/vendor/opentimestamps.min.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <main style="max-width: 760px; margin: 40px auto; padding: 0 16px; text-align: left;">
+      <h1>ProofStamp – OpenTimestamps test</h1>
+      <p>Choose any file. It stays on your computer – only its fingerprint (SHA-256) is sent.</p>
+      <input type="file" id="file-input" />
+      <pre id="log" style="white-space: pre-wrap; word-break: break-all; font-size: 13px;"></pre>
+    </main>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

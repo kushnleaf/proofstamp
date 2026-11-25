@@ -25,7 +25,8 @@ Presentation: 15 December 2026. Budget: €0.
 - UI: no emojis on the website (Otto's decision). Colors carry the meaning:
   green = REAL, amber = PENDING, red = DOES NOT MATCH, grey = error.
 - Code: public GitHub repo – https://github.com/kushnleaf/proofstamp
-- Hosting: free (Vercel or Netlify) – decide when deploying.
+- Hosting: Vercel (free Hobby plan), auto-deploys on every git push.
+- Live site: https://proofstamp-seven.vercel.app
 - Project folder on Mac: ~/Projects/proofstamp
 - Test files: ~/Projects/test-stamps (NEVER edit the originals there)
 
@@ -64,7 +65,7 @@ Presentation: 15 December 2026. Budget: €0.
 ## Next
 - [ ] Verify own test files once confirmed → REAL with 25 Nov date (criterion 2),
       download the upgraded proofs and replace the old .ots files
-- [ ] Deploy online for free (Vercel or Netlify)
+- [x] Deployed on 25 Nov: https://proofstamp-seven.vercel.app
 - [ ] 5 classmates test it alone, under 2 minutes each (criterion 5)
 - [ ] Nice-to-have (only if time): link to the Bitcoin block on a block explorer
 
